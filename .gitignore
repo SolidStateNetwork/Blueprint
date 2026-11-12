@@ -1,0 +1,25 @@
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# Dependencies & Build Artifacts
+node_modules/
+dist/
+build/
+.venv/
+__pycache__/
+*.pyc
+
+# AI Tooling Temporary Caches (keep tracked specs/tasks, ignore local logs)
+_bmad-output/
+.taskmaster/logs/
