@@ -33,7 +33,7 @@ if (!skipTools) {
   console.log('\n📦 Installing local AI workflow tools (use --skip-tools to bypass)...');
 
   try {
-    console.log('⏳ [1/3] Installing latest BMAD-METHOD skills locally...');
+    console.log('⏳ [1/4] Installing latest BMAD-METHOD skills locally...');
     execSync(`${npxCmd} -y skills add bmad-code-org/BMAD-METHOD --skill "*" -y`, {
       stdio: 'inherit'
     });
@@ -43,7 +43,7 @@ if (!skipTools) {
   }
 
   try {
-    console.log('\n⏳ [2/3] Installing Anti-Slop skills & setting default mode ("during")...');
+    console.log('\n⏳ [2/4] Installing Anti-Slop skills & setting default mode ("during")...');
     execSync(`${npxCmd} -y skills add miqdadbadjuber/anti-slop --skill "*" -y`, {
       stdio: 'inherit'
     });
@@ -56,7 +56,18 @@ if (!skipTools) {
   }
 
   try {
-    console.log('\n⏳ [3/3] Initializing Claude Task Master locally...');
+    console.log('\n⏳ [3/4] Installing universal Superpowers engineering skills (debugging, TDD, verification)...');
+    execSync(
+      `${npxCmd} -y skills add obra/superpowers --skill systematic-debugging --skill verification-before-completion --skill test-driven-development -y`,
+      { stdio: 'inherit' }
+    );
+    console.log('✅ Superpowers engineering skills installed.');
+  } catch (err) {
+    console.warn('⚠️  Superpowers auto-install skipped/failed. Run manually: npx skills add obra/superpowers --skill systematic-debugging --skill verification-before-completion --skill test-driven-development');
+  }
+
+  try {
+    console.log('\n⏳ [4/4] Initializing Claude Task Master locally...');
     execSync(`${npxCmd} -y task-master-ai init -y`, {
       stdio: 'inherit'
     });
@@ -76,9 +87,11 @@ console.log(`
    • Cursor                   -> .cursor/rules/core-governance.mdc & antislop.mdc
    • GitHub Copilot          -> .github/copilot-instructions.md
    • Anti-Slop Filter         -> .agents/skills/antislop* (mode: "during")
+   • Superpowers Discipline   -> systematic-debugging, TDD & verification-before-completion
+   • MCP Servers (.mcp.json)  -> Context7 (live docs) & Claude Task Master
 
 Next Steps:
-   1. Add your API key(s) in .env (if needed for Task Master).
+   1. Add your API key(s) in .env (if needed for Task Master; Context7 works without keys).
    2. Open .ai/01-architecture.md (or run BMAD /architect) to define your stack & boundaries.
-   3. Optional for UI projects: create DESIGN.md to pair visual direction with the Anti-Slop filter.
+   3. Run "node verify-governance.mjs" anytime to verify repository & blackbox integrity.
 `);

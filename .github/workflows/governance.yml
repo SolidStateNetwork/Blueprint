@@ -1,0 +1,22 @@
+name: AI Governance & Integrity Check
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  governance:
+    name: Verify AI Governance & Blackbox Hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Run Governance Verification
+        run: node verify-governance.mjs
