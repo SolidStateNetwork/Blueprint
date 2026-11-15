@@ -41,6 +41,19 @@ if (!fs.existsSync('.env')) {
   console.log('ℹ️  .env already exists (skipped)');
 }
 
+const gitHooksDir = path.join(process.cwd(), '.git', 'hooks');
+if (fs.existsSync(gitHooksDir)) {
+  const preCommitPath = path.join(gitHooksDir, 'pre-commit');
+  const hookScript = '#!/bin/sh\nnode verify-governance.mjs\n';
+  fs.writeFileSync(preCommitPath, hookScript, { encoding: 'utf8', mode: 0o755 });
+  try {
+    fs.chmodSync(preCommitPath, 0o755);
+  } catch {
+    // chmod is a no-op on Windows NTFS
+  }
+  console.log('✅ Activated Git pre-commit hook (.git/hooks/pre-commit -> node verify-governance.mjs)');
+}
+
 if (!skipTools) {
   console.log('\n📦 Installing/updating local AI workflow tools (use --skip-tools to bypass, --update to refresh)...');
 
