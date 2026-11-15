@@ -13,6 +13,7 @@ Standardized GitHub template repository for **Agentic Engineering & Vibe Coding*
 ## Integrated AI Workflow & Quality Tooling (100% Language-Agnostic)
 - **BMAD-METHOD (`bmad-code-org/BMAD-METHOD`):** Structured agentic agile workflows (`/architect`, `/pm`, `/dev`, etc.).
 - **Anti-Slop (`miqdadbadjuber/anti-slop`):** Preconfigured in `during` mode to filter out generic AI UI, hype copywriting, accessibility gaps, broken mobile layouts, and redundant code comments across 6 specialized skills (`antislop`, `antislop-ui`, `antislop-copywriting`, `antislop-human`, `antislop-layoutmobile`, `antislop-code`).
+- **Design-MD-Generator v2 (`jasonhnd/design-md-generator`):** Generates comprehensive 17-section `DESIGN.md` v2 specifications (from a live website URL or project brief) paired with curated references from [getdesign.md](https://getdesign.md/) and [shadcn.io](https://www.shadcn.io/).
 - **Superpowers Discipline (`obra/superpowers`):** Universal engineering skills for `systematic-debugging`, `test-driven-development`, and `verification-before-completion`.
 - **Beautify GitHub README (`oil-oil/beautify-github-readme`):** Automatically loaded whenever `README.md` is created or modified to enforce clear information architecture, honest technical proof, and custom SVG diagrams.
 - **Context7 & Task Master MCP (`.mcp.json`):** Key-free live library documentation for any language via `@upstash/context7-mcp` plus local task breakdown via `task-master-ai`.
@@ -21,5 +22,5 @@ Standardized GitHub template repository for **Agentic Engineering & Vibe Coding*
 ## Quickstart (Windows & Linux)
 1. Click **"Use this template"** -> **"Create a new repository"** on GitHub and clone it locally.
 2. Open your agent (**Antigravity**, **OpenCode**, **Claude Code**, or **Cursor**) and simply type **`init`** (or **`init: <your project idea & tech stack>`**) in the chat — *or* run `node init-project.mjs` manually in the terminal.
-3. The agent automatically runs `node init-project.mjs`, sets up `.env` and all local skills, and interviews you (or uses your brief) to populate `.ai/01-architecture.md`, `.ai/05-patterns.md`, and `.ai/03-roadmap.md`.
+3. The agent automatically runs `node init-project.mjs`, sets up `.env` and all local skills, populates `.ai/01-architecture.md`, `.ai/05-patterns.md`, and `.ai/03-roadmap.md`, and (for UI projects) helps you set up a 17-section `DESIGN.md` via [getdesign.md](https://getdesign.md/), [shadcn.io](https://www.shadcn.io/), or `design-md-generator`.
 4. Run `node verify-governance.mjs` anytime (also runs automatically in GitHub Actions) to verify repository hygiene.

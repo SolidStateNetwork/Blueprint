@@ -5,6 +5,7 @@ When the user starts a session by typing `init` (or `init: <project description>
 1. **Never overwrite `AGENTS.md`** (do not replace this file with a generic `/init` summary).
 2. Check if `.env` or `.agents/skills/` exist; if not, run `node init-project.mjs` first.
 3. If no project details were provided, ask 3 short questions (1. Project purpose, 2. Tech stack, 3. Core modules). Once answered (or if already provided in `init: ...`), populate `.ai/01-architecture.md`, `.ai/05-patterns.md`, and `.ai/03-roadmap.md` (`TASK-001` completed).
+4. **UI / `DESIGN.md` Setup (if project has a UI/frontend and no `DESIGN.md` exists):** Recommend picking a design system from **https://getdesign.md/** or **https://www.shadcn.io/**, OR offer to generate a comprehensive **17-section `DESIGN.md` (v2 format)** right away using `.agents/skills/design-md-generator/SKILL.md` and `.agents/skills/design-md-generator/resources/design-md-format.md` (either extracted from a reference URL or tailored to their desired style).
 
 ## 1. Core Mandate (Read First)
 You are operating inside a structured repository. Before modifying any file, you MUST read and respect the constraints inside `.ai/`:

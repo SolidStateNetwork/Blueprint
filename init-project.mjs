@@ -63,7 +63,7 @@ if (!skipTools) {
   console.log('\n📦 Installing/updating local AI workflow tools (use --skip-tools to bypass, --update to refresh)...');
 
   try {
-    console.log('⏳ [1/5] Installing latest BMAD-METHOD skills locally...');
+    console.log('⏳ [1/6] Installing latest BMAD-METHOD skills locally...');
     execSync(`${npxCmd} -y skills add bmad-code-org/BMAD-METHOD --skill "*" --copy -y`, {
       stdio: 'inherit'
     });
@@ -73,7 +73,7 @@ if (!skipTools) {
   }
 
   try {
-    console.log('\n⏳ [2/5] Installing Anti-Slop skills & setting default mode ("during")...');
+    console.log('\n⏳ [2/6] Installing Anti-Slop skills & setting default mode ("during")...');
     execSync(`${npxCmd} -y skills add miqdadbadjuber/anti-slop --skill "*" --copy -y`, {
       stdio: 'inherit'
     });
@@ -89,7 +89,7 @@ if (!skipTools) {
   }
 
   try {
-    console.log('\n⏳ [3/5] Installing universal Superpowers engineering skills (debugging, TDD, verification)...');
+    console.log('\n⏳ [3/6] Installing universal Superpowers engineering skills (debugging, TDD, verification)...');
     execSync(
       `${npxCmd} -y skills add obra/superpowers --skill systematic-debugging --skill verification-before-completion --skill test-driven-development --copy -y`,
       { stdio: 'inherit' }
@@ -100,7 +100,7 @@ if (!skipTools) {
   }
 
   try {
-    console.log('\n⏳ [4/5] Installing Beautify-GitHub-README skill (auto-triggered on README.md edits)...');
+    console.log('\n⏳ [4/6] Installing Beautify-GitHub-README skill (auto-triggered on README.md edits)...');
     execSync(
       `${npxCmd} -y skills add oil-oil/beautify-github-readme --skill beautify-github-readme --copy -y`,
       { stdio: 'inherit' }
@@ -110,9 +110,43 @@ if (!skipTools) {
     console.warn('⚠️  Beautify-GitHub-README auto-install skipped/failed. Run manually: npx skills add oil-oil/beautify-github-readme --skill beautify-github-readme --copy -y');
   }
 
+  try {
+    console.log('\n⏳ [5/6] Installing Design-MD-Generator v2 skill (17-section DESIGN.md spec & extractor)...');
+    execSync(
+      `${npxCmd} -y skills add jasonhnd/design-md-generator --skill design-md-generator --copy -y`,
+      { stdio: 'inherit' }
+    );
+    const dmdgDirs = [
+      path.join(process.cwd(), '.agents', 'skills', 'design-md-generator'),
+      path.join(process.cwd(), '.cursor', 'skills', 'design-md-generator'),
+      path.join(process.cwd(), '.claude', 'skills', 'design-md-generator')
+    ];
+    const unwantedItems = [
+      'AGENTS.md',
+      'CLAUDE.md',
+      'GEMINI.md',
+      '.cursorrules',
+      '.windsurfrules',
+      '.github',
+      'examples'
+    ];
+    for (const dir of dmdgDirs) {
+      if (!fs.existsSync(dir)) continue;
+      for (const item of unwantedItems) {
+        const target = path.join(dir, item);
+        if (fs.existsSync(target)) {
+          fs.rmSync(target, { recursive: true, force: true });
+        }
+      }
+    }
+    console.log('✅ Design-MD-Generator v2 skill installed and sanitized.');
+  } catch (err) {
+    console.warn('⚠️  Design-MD-Generator auto-install skipped/failed. Run manually: npx skills add jasonhnd/design-md-generator --skill design-md-generator --copy -y');
+  }
+
   if (!isUpdate) {
     try {
-      console.log('\n⏳ [5/5] Initializing Claude Task Master locally...');
+      console.log('\n⏳ [6/6] Initializing Claude Task Master locally...');
       execSync(`${npxCmd} -y task-master-ai init -y`, {
         stdio: 'inherit'
       });
@@ -134,12 +168,13 @@ console.log(`
    • Cursor                   -> .cursor/rules/core-governance.mdc & antislop.mdc
    • GitHub Copilot          -> .github/copilot-instructions.md
    • Anti-Slop Filter         -> .agents/skills/antislop* (mode: "during")
+   • Design-MD-Generator v2   -> .agents/skills/design-md-generator (+ getdesign.md / shadcn.io)
    • Superpowers Discipline   -> systematic-debugging, TDD & verification-before-completion
    • README Auto-Skill        -> .agents/skills/beautify-github-readme (auto-loaded on README edits)
    • MCP Servers              -> .mcp.json & opencode.json (Context7 & Task Master)
 
 Next Steps:
    1. Add your API key(s) in .env (if needed for Task Master; Context7 works without keys).
-   2. Open .ai/01-architecture.md (or run BMAD /architect) to define your stack & boundaries.
+   2. Open .ai/01-architecture.md (or type "init" in chat) to define your stack, boundaries & DESIGN.md.
    3. Run "node verify-governance.mjs" anytime to verify repository & blackbox integrity.
 `);
