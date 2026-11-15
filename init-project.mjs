@@ -33,7 +33,7 @@ if (!skipTools) {
   console.log('\n📦 Installing local AI workflow tools (use --skip-tools to bypass)...');
 
   try {
-    console.log('⏳ [1/2] Installing latest BMAD-METHOD skills locally...');
+    console.log('⏳ [1/3] Installing latest BMAD-METHOD skills locally...');
     execSync(`${npxCmd} -y skills add bmad-code-org/BMAD-METHOD --skill "*" -y`, {
       stdio: 'inherit'
     });
@@ -43,7 +43,20 @@ if (!skipTools) {
   }
 
   try {
-    console.log('\n⏳ [2/2] Initializing Claude Task Master locally...');
+    console.log('\n⏳ [2/3] Installing Anti-Slop skills & setting default mode ("during")...');
+    execSync(`${npxCmd} -y skills add miqdadbadjuber/anti-slop --skill "*" -y`, {
+      stdio: 'inherit'
+    });
+    execSync(`${npxCmd} -y antislop-ai --mode during`, {
+      stdio: 'inherit'
+    });
+    console.log('✅ Anti-Slop skills installed and configured to "during" mode.');
+  } catch (err) {
+    console.warn('⚠️  Anti-Slop auto-install skipped/failed. Run manually: npx skills add miqdadbadjuber/anti-slop --skill "*" && npx antislop-ai --mode during');
+  }
+
+  try {
+    console.log('\n⏳ [3/3] Initializing Claude Task Master locally...');
     execSync(`${npxCmd} -y task-master-ai init -y`, {
       stdio: 'inherit'
     });
@@ -60,10 +73,12 @@ console.log(`
    • ChatGPT / OpenAI Codex   -> AGENTS.md
    • Gemini CLI / Antigravity -> GEMINI.md (@AGENTS.md)
    • Claude Code              -> CLAUDE.md
-   • Cursor                   -> .cursor/rules/core-governance.mdc
+   • Cursor                   -> .cursor/rules/core-governance.mdc & antislop.mdc
    • GitHub Copilot          -> .github/copilot-instructions.md
+   • Anti-Slop Filter         -> .agents/skills/antislop* (mode: "during")
 
 Next Steps:
    1. Add your API key(s) in .env (if needed for Task Master).
    2. Open .ai/01-architecture.md (or run BMAD /architect) to define your stack & boundaries.
+   3. Optional for UI projects: create DESIGN.md to pair visual direction with the Anti-Slop filter.
 `);

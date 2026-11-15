@@ -11,3 +11,10 @@
 - **Secrets & Config:** All credentials, API keys, and environment-specific URLs belong strictly in `.env` (never hardcoded or committed).
 - **Backward Compatibility:** Do not break existing public API contracts or DB schemas without an explicit migration entry in `.ai/04-decisions.md`.
 - **OS Portability:** Use `path.join` / `pathlib.Path` instead of hardcoded `\` or `/` path strings, and ensure scripts run identically on Windows and Linux.
+
+## 3. Anti-Slop Quality Filter (UI, Copy, Accessibility & Code)
+- **Active Filter (`during` Mode):** Apply the installed `antislop` skills (`.agents/skills/antislop*`) while generating code, UI, or text.
+- **Purposeful UI & `DESIGN.md`:** Reject visual techniques without a concrete hierarchy, identity, or readability purpose. Read `DESIGN.md` (when present) for visual direction.
+- **Honest Copywriting (`antislop-copywriting`):** Never invent fake numbers, latency metrics, ROI claims, testimonials, or generic AI hype phrases.
+- **Accessibility & Mobile Reflow (`antislop-human` & `antislop-layoutmobile`):** Enforce WCAG 2.2 contrast, visible focus states, semantic controls, and responsive mobile reflow without horizontal overflow.
+- **Clean Code Comments (`antislop-code`):** Never add decorative ASCII/box-drawing section banners, emojis in code comments, or comments that merely restate the code.

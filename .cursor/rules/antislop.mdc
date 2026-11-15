@@ -1,0 +1,19 @@
+---
+description: Always-on antislop pointer for Cursor sessions. Loads the matching skills and default "during" usage mode.
+globs: ["**/*"]
+alwaysApply: true
+---
+
+<EXTREMELY_IMPORTANT>
+You use antislop (Anti Slop: Rules for AI Coding Agents). It is a filter, not a style guide: it stops generic AI slop in generated UI, copy, and code, without prescribing aesthetics.
+
+For UI, copy, people, mobile layout, or code comments work, load the matching antislop skill before starting (installed via `node init-project.mjs`):
+- Core filter, always on: `.agents/skills/antislop/SKILL.md`
+- UI / visual: `.agents/skills/antislop-ui/SKILL.md`
+- Copy & text: `.agents/skills/antislop-copywriting/SKILL.md`
+- People: `.agents/skills/antislop-human/SKILL.md`
+- Mobile / responsive: `.agents/skills/antislop-layoutmobile/SKILL.md`
+- Code comments: `.agents/skills/antislop-code/SKILL.md`
+
+Before starting, follow the core's "Two Usage Modes" section: explicit session instruction first, then global preference (`during` preconfigured by default), then fallback to `during`. For a resolved mode, announce `antislop active: <mode> (session override).` or `antislop active: <mode> (global preference).` once, using the actual mode and source.
+</EXTREMELY_IMPORTANT>
