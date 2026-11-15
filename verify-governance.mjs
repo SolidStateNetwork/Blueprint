@@ -61,6 +61,12 @@ for (const relPath of REQUIRED_FILES) {
   if (!fs.existsSync(fullPath)) {
     console.error(`❌ Missing mandatory governance file: ${relPath}`);
     errors++;
+  } else if (relPath.startsWith('.ai/')) {
+    const lines = fs.readFileSync(fullPath, 'utf8').split(/\r?\n/).length;
+    if (lines > 200) {
+      console.warn(`⚠️  Memory bank file "${relPath}" has ${lines} lines (>200). Consider moving old entries to .ai/archive/ for token hygiene.`);
+      warnings++;
+    }
   }
 }
 
