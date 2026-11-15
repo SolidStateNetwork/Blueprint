@@ -14,6 +14,7 @@ Standardized GitHub template repository for **Agentic Engineering & Vibe Coding*
 - **BMAD-METHOD (`bmad-code-org/BMAD-METHOD`):** Structured agentic agile workflows (`/architect`, `/pm`, `/dev`, etc.).
 - **Anti-Slop (`miqdadbadjuber/anti-slop`):** Preconfigured in `during` mode to filter out generic AI UI, hype copywriting, accessibility gaps, broken mobile layouts, and redundant code comments across 6 specialized skills (`antislop`, `antislop-ui`, `antislop-copywriting`, `antislop-human`, `antislop-layoutmobile`, `antislop-code`).
 - **Superpowers Discipline (`obra/superpowers`):** Universal engineering skills for `systematic-debugging`, `test-driven-development`, and `verification-before-completion`.
+- **Beautify GitHub README (`oil-oil/beautify-github-readme`):** Automatically loaded whenever `README.md` is created or modified to enforce clear information architecture, honest technical proof, and custom SVG diagrams.
 - **Context7 & Task Master MCP (`.mcp.json`):** Key-free live library documentation for any language via `@upstash/context7-mcp` plus local task breakdown via `task-master-ai`.
 - **Automated Governance Check (`verify-governance.mjs` & GitHub Actions):** Zero-dependency cross-platform verifier checking `.ai/` integrity, leaked `.env`/secrets, forbidden `TODO: implement later` stubs, merge conflicts, and file size guidelines.
 

@@ -58,7 +58,7 @@ if (!skipTools) {
   console.log('\n📦 Installing/updating local AI workflow tools (use --skip-tools to bypass, --update to refresh)...');
 
   try {
-    console.log('⏳ [1/4] Installing latest BMAD-METHOD skills locally...');
+    console.log('⏳ [1/5] Installing latest BMAD-METHOD skills locally...');
     execSync(`${npxCmd} -y skills add bmad-code-org/BMAD-METHOD --skill "*" --copy -y`, {
       stdio: 'inherit'
     });
@@ -68,7 +68,7 @@ if (!skipTools) {
   }
 
   try {
-    console.log('\n⏳ [2/4] Installing Anti-Slop skills & setting default mode ("during")...');
+    console.log('\n⏳ [2/5] Installing Anti-Slop skills & setting default mode ("during")...');
     execSync(`${npxCmd} -y skills add miqdadbadjuber/anti-slop --skill "*" --copy -y`, {
       stdio: 'inherit'
     });
@@ -84,7 +84,7 @@ if (!skipTools) {
   }
 
   try {
-    console.log('\n⏳ [3/4] Installing universal Superpowers engineering skills (debugging, TDD, verification)...');
+    console.log('\n⏳ [3/5] Installing universal Superpowers engineering skills (debugging, TDD, verification)...');
     execSync(
       `${npxCmd} -y skills add obra/superpowers --skill systematic-debugging --skill verification-before-completion --skill test-driven-development --copy -y`,
       { stdio: 'inherit' }
@@ -94,9 +94,20 @@ if (!skipTools) {
     console.warn('⚠️  Superpowers auto-install skipped/failed. Run manually: npx skills add obra/superpowers --skill systematic-debugging --skill verification-before-completion --skill test-driven-development --copy -y');
   }
 
+  try {
+    console.log('\n⏳ [4/5] Installing Beautify-GitHub-README skill (auto-triggered on README.md edits)...');
+    execSync(
+      `${npxCmd} -y skills add oil-oil/beautify-github-readme --skill beautify-github-readme --copy -y`,
+      { stdio: 'inherit' }
+    );
+    console.log('✅ Beautify-GitHub-README skill installed.');
+  } catch (err) {
+    console.warn('⚠️  Beautify-GitHub-README auto-install skipped/failed. Run manually: npx skills add oil-oil/beautify-github-readme --skill beautify-github-readme --copy -y');
+  }
+
   if (!isUpdate) {
     try {
-      console.log('\n⏳ [4/4] Initializing Claude Task Master locally...');
+      console.log('\n⏳ [5/5] Initializing Claude Task Master locally...');
       execSync(`${npxCmd} -y task-master-ai init -y`, {
         stdio: 'inherit'
       });
@@ -119,6 +130,7 @@ console.log(`
    • GitHub Copilot          -> .github/copilot-instructions.md
    • Anti-Slop Filter         -> .agents/skills/antislop* (mode: "during")
    • Superpowers Discipline   -> systematic-debugging, TDD & verification-before-completion
+   • README Auto-Skill        -> .agents/skills/beautify-github-readme (auto-loaded on README edits)
    • MCP Servers              -> .mcp.json & opencode.json (Context7 & Task Master)
 
 Next Steps:

@@ -21,6 +21,7 @@ You are operating inside a structured repository. Before modifying any file, you
 - **Paraphrase First:** For non-trivial changes (>2 files or architectural impact), briefly summarize your plan and affected interfaces before modifying code.
 - **Cross-Platform Hygiene:** Ensure all file paths, scripts, and commands work cleanly on both Windows and Linux (use forward slashes `/` in code/configs, avoid OS-specific shell assumptions).
 - **Anti-Slop Filter (`during` mode):** Apply the `antislop` rules while generating UI, copy, accessibility, responsive layouts, and code comments. Never invent fake metrics/testimonials, decorative noise without purpose, or redundant section-banner comments.
+- **Automatic `README.md` Skill Trigger:** Whenever creating, editing, or restructuring `README.md` (or `README.*.md`), you MUST immediately load and follow `.agents/skills/beautify-github-readme/SKILL.md` (plus `antislop-copywriting`). For full README creation/redesign requests, run the complete `beautify-github-readme` workflow (including SVG hero/architecture diagrams); for minor inline documentation updates after code changes, apply its content-architecture and clarity rules directly without blocking on interactive mode questions.
 - **Verification Before Completion:** Never claim a task or bugfix is complete without running the actual verification/test commands (`node verify-governance.mjs` and project tests) and confirming clean output.
 
 ## 3. Mandatory Post-Task Protocol

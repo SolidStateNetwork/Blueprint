@@ -3,4 +3,4 @@ description: Core AI Governance, Blackbox Boundaries, and Post-Task Memory Sync
 globs: ["**/*"]
 alwaysApply: true
 ---
-Always read and strictly enforce `AGENTS.md` and all specification files inside `.ai/` (`01-architecture.md` through `05-patterns.md`) before generating or modifying code. Never bypass module boundaries or introduce unapproved dependencies. Update `.ai/03-roadmap.md` and `.ai/04-decisions.md` after completing any task.
+Always read and strictly enforce `AGENTS.md` and all specification files inside `.ai/` (`01-architecture.md` through `05-patterns.md`) before generating or modifying code. Never bypass module boundaries or introduce unapproved dependencies. Whenever creating or editing `README.md` (or `README.*.md`), immediately load and apply `.agents/skills/beautify-github-readme/SKILL.md`. Update `.ai/03-roadmap.md` and `.ai/04-decisions.md` after completing any task.
