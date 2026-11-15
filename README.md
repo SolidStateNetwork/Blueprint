@@ -3,8 +3,9 @@
 Standardized GitHub template repository for **Agentic Engineering & Vibe Coding** across **Windows & Linux**, compatible out-of-the-box with **ChatGPT (OpenAI Codex)**, **Gemini (Gemini CLI / Antigravity)**, **Claude (Claude Code)**, **Cursor**, and **GitHub Copilot**.
 
 ## Supported AI Agents (Single Source of Truth: `AGENTS.md`)
-- **ChatGPT / OpenAI Codex / OpenCode:** Reads `AGENTS.md` natively.
+- **OpenCode:** Reads `opencode.json` (auto-loads `AGENTS.md`, `.ai/*.md`, and MCP servers).
 - **Gemini CLI / Antigravity:** Reads `GEMINI.md` (which imports `@AGENTS.md`).
+- **ChatGPT / OpenAI Codex:** Reads `AGENTS.md` natively.
 - **Claude Code:** Reads `CLAUDE.md` (points to `AGENTS.md`).
 - **Cursor:** Reads `.cursor/rules/core-governance.mdc` and `.cursor/rules/antislop.mdc`.
 - **GitHub Copilot:** Reads `.github/copilot-instructions.md`.

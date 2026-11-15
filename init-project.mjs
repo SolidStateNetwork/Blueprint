@@ -59,17 +59,17 @@ if (!skipTools) {
 
   try {
     console.log('⏳ [1/4] Installing latest BMAD-METHOD skills locally...');
-    execSync(`${npxCmd} -y skills add bmad-code-org/BMAD-METHOD --skill "*" -y`, {
+    execSync(`${npxCmd} -y skills add bmad-code-org/BMAD-METHOD --skill "*" --copy -y`, {
       stdio: 'inherit'
     });
     console.log('✅ BMAD-METHOD skills installed.');
   } catch (err) {
-    console.warn('⚠️  BMAD-METHOD auto-install skipped/failed. Run manually: npx skills add bmad-code-org/BMAD-METHOD --skill "*"');
+    console.warn('⚠️  BMAD-METHOD auto-install skipped/failed. Run manually: npx skills add bmad-code-org/BMAD-METHOD --skill "*" --copy -y');
   }
 
   try {
     console.log('\n⏳ [2/4] Installing Anti-Slop skills & setting default mode ("during")...');
-    execSync(`${npxCmd} -y skills add miqdadbadjuber/anti-slop --skill "*" -y`, {
+    execSync(`${npxCmd} -y skills add miqdadbadjuber/anti-slop --skill "*" --copy -y`, {
       stdio: 'inherit'
     });
     if (isUpdate) {
@@ -80,18 +80,18 @@ if (!skipTools) {
     });
     console.log('✅ Anti-Slop skills installed and configured to "during" mode.');
   } catch (err) {
-    console.warn('⚠️  Anti-Slop auto-install skipped/failed. Run manually: npx skills add miqdadbadjuber/anti-slop --skill "*" && npx antislop-ai --mode during');
+    console.warn('⚠️  Anti-Slop auto-install skipped/failed. Run manually: npx skills add miqdadbadjuber/anti-slop --skill "*" --copy -y && npx antislop-ai --mode during');
   }
 
   try {
     console.log('\n⏳ [3/4] Installing universal Superpowers engineering skills (debugging, TDD, verification)...');
     execSync(
-      `${npxCmd} -y skills add obra/superpowers --skill systematic-debugging --skill verification-before-completion --skill test-driven-development -y`,
+      `${npxCmd} -y skills add obra/superpowers --skill systematic-debugging --skill verification-before-completion --skill test-driven-development --copy -y`,
       { stdio: 'inherit' }
     );
     console.log('✅ Superpowers engineering skills installed.');
   } catch (err) {
-    console.warn('⚠️  Superpowers auto-install skipped/failed. Run manually: npx skills add obra/superpowers --skill systematic-debugging --skill verification-before-completion --skill test-driven-development');
+    console.warn('⚠️  Superpowers auto-install skipped/failed. Run manually: npx skills add obra/superpowers --skill systematic-debugging --skill verification-before-completion --skill test-driven-development --copy -y');
   }
 
   if (!isUpdate) {
@@ -111,14 +111,15 @@ if (!skipTools) {
 
 console.log(`
 ✨ Blueprint ready! Multi-Agent entrypoints active:
-   • ChatGPT / OpenAI Codex   -> AGENTS.md
+   • OpenCode                 -> opencode.json + AGENTS.md + .ai/*.md
    • Gemini CLI / Antigravity -> GEMINI.md (@AGENTS.md)
+   • ChatGPT / OpenAI Codex   -> AGENTS.md
    • Claude Code              -> CLAUDE.md
    • Cursor                   -> .cursor/rules/core-governance.mdc & antislop.mdc
    • GitHub Copilot          -> .github/copilot-instructions.md
    • Anti-Slop Filter         -> .agents/skills/antislop* (mode: "during")
    • Superpowers Discipline   -> systematic-debugging, TDD & verification-before-completion
-   • MCP Servers (.mcp.json)  -> Context7 (live docs) & Claude Task Master
+   • MCP Servers              -> .mcp.json & opencode.json (Context7 & Task Master)
 
 Next Steps:
    1. Add your API key(s) in .env (if needed for Task Master; Context7 works without keys).

@@ -7,6 +7,8 @@ const REQUIRED_FILES = [
   'AGENTS.md',
   'CLAUDE.md',
   'GEMINI.md',
+  'opencode.json',
+  '.mcp.json',
   '.github/copilot-instructions.md',
   '.cursor/rules/core-governance.mdc',
   '.cursor/rules/antislop.mdc',
