@@ -13,7 +13,12 @@ const projectName = path.basename(process.cwd());
 console.log(`🚀 ${isUpdate ? 'Updating' : 'Initializing'} AI Project Blueprint (${projectName}) on ${os.platform()} (${os.arch()})...`);
 
 const archFile = path.join(process.cwd(), '.ai', '01-architecture.md');
-if (!isUpdate && projectName !== 'agentic-project-template' && fs.existsSync(archFile)) {
+if (
+  !isUpdate &&
+  projectName.toLowerCase() !== 'blueprint' &&
+  projectName !== 'agentic-project-template' &&
+  fs.existsSync(archFile)
+) {
   const archContent = fs.readFileSync(archFile, 'utf8');
   if (archContent.includes('`[PROJECT_NAME]`')) {
     fs.writeFileSync(archFile, archContent.replace('`[PROJECT_NAME]`', `\`${projectName}\``), 'utf8');
