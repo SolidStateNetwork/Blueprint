@@ -63,7 +63,7 @@ if (!skipTools) {
   console.log('\n📦 Installing/updating local AI workflow tools (use --skip-tools to bypass, --update to refresh)...');
 
   try {
-    console.log('⏳ [1/6] Installing latest BMAD-METHOD skills locally...');
+    console.log('⏳ [1/7] Installing latest BMAD-METHOD skills locally...');
     execSync(`${npxCmd} -y skills add bmad-code-org/BMAD-METHOD --skill "*" --copy -y`, {
       stdio: 'inherit'
     });
@@ -73,7 +73,7 @@ if (!skipTools) {
   }
 
   try {
-    console.log('\n⏳ [2/6] Installing Anti-Slop skills & setting default mode ("during")...');
+    console.log('\n⏳ [2/7] Installing Anti-Slop skills & setting default mode ("during")...');
     execSync(`${npxCmd} -y skills add miqdadbadjuber/anti-slop --skill "*" --copy -y`, {
       stdio: 'inherit'
     });
@@ -89,7 +89,7 @@ if (!skipTools) {
   }
 
   try {
-    console.log('\n⏳ [3/6] Installing universal Superpowers engineering skills (debugging, TDD, verification)...');
+    console.log('\n⏳ [3/7] Installing universal Superpowers engineering skills (debugging, TDD, verification)...');
     execSync(
       `${npxCmd} -y skills add obra/superpowers --skill systematic-debugging --skill verification-before-completion --skill test-driven-development --copy -y`,
       { stdio: 'inherit' }
@@ -100,18 +100,33 @@ if (!skipTools) {
   }
 
   try {
-    console.log('\n⏳ [4/6] Installing Beautify-GitHub-README skill (auto-triggered on README.md edits)...');
+    console.log('\n⏳ [4/7] Installing Trail of Bits security skills (sharp-edges, differential-review, supply-chain-risk-auditor)...');
+    execSync(
+      `${npxCmd} -y skills add trailofbits/skills --skill sharp-edges --skill differential-review --skill supply-chain-risk-auditor --copy -y`,
+      { stdio: 'inherit' }
+    );
+    console.log('✅ Trail of Bits security skills installed.');
+  } catch (err) {
+    console.warn('⚠️  Trail of Bits security skills skipped/failed. Run manually: npx skills add trailofbits/skills --skill sharp-edges --skill differential-review --skill supply-chain-risk-auditor --copy -y');
+  }
+
+  try {
+    console.log('\n⏳ [5/7] Installing Beautify-GitHub-README & Anthropic Frontend-Design skills...');
     execSync(
       `${npxCmd} -y skills add oil-oil/beautify-github-readme --skill beautify-github-readme --copy -y`,
       { stdio: 'inherit' }
     );
-    console.log('✅ Beautify-GitHub-README skill installed.');
+    execSync(
+      `${npxCmd} -y skills add anthropics/skills --skill frontend-design --copy -y`,
+      { stdio: 'inherit' }
+    );
+    console.log('✅ Beautify-GitHub-README & Anthropic Frontend-Design skills installed.');
   } catch (err) {
-    console.warn('⚠️  Beautify-GitHub-README auto-install skipped/failed. Run manually: npx skills add oil-oil/beautify-github-readme --skill beautify-github-readme --copy -y');
+    console.warn('⚠️  README / Frontend-Design skills skipped/failed. Run manually: npx skills add oil-oil/beautify-github-readme --skill beautify-github-readme --copy -y && npx skills add anthropics/skills --skill frontend-design --copy -y');
   }
 
   try {
-    console.log('\n⏳ [5/6] Installing Design-MD-Generator v2 skill (17-section DESIGN.md spec & extractor)...');
+    console.log('\n⏳ [6/7] Installing Design-MD-Generator v2 skill (17-section DESIGN.md spec & extractor)...');
     execSync(
       `${npxCmd} -y skills add jasonhnd/design-md-generator --skill design-md-generator --copy -y`,
       { stdio: 'inherit' }
@@ -146,7 +161,7 @@ if (!skipTools) {
 
   if (!isUpdate) {
     try {
-      console.log('\n⏳ [6/6] Initializing Claude Task Master locally...');
+      console.log('\n⏳ [7/7] Initializing Claude Task Master locally...');
       execSync(`${npxCmd} -y task-master-ai init -y`, {
         stdio: 'inherit'
       });
@@ -168,7 +183,8 @@ console.log(`
    • Cursor                   -> .cursor/rules/core-governance.mdc & antislop.mdc
    • GitHub Copilot          -> .github/copilot-instructions.md
    • Anti-Slop Filter         -> .agents/skills/antislop* (mode: "during")
-   • Design-MD-Generator v2   -> .agents/skills/design-md-generator (+ getdesign.md / shadcn.io)
+   • Design & UI Stack        -> design-md-generator v2 + frontend-design (+ getdesign.md / shadcn.io)
+   • Security Guardrails      -> Trail of Bits (sharp-edges, differential-review, supply-chain-risk-auditor)
    • Superpowers Discipline   -> systematic-debugging, TDD & verification-before-completion
    • README Auto-Skill        -> .agents/skills/beautify-github-readme (auto-loaded on README edits)
    • MCP Servers              -> .mcp.json & opencode.json (Context7 & Task Master)

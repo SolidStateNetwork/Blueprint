@@ -8,7 +8,8 @@
 ## 2. Code & Safety Hygiene
 - **No Stubs in Production:** Never leave `// TODO: implement later`, dummy return values, or mock data in production paths unless explicitly requested.
 - **Explicit Error Handling:** Fail loudly with typed/structured errors; never swallow exceptions with empty `catch` blocks.
-- **Secrets & Config:** All credentials, API keys, and environment-specific URLs belong strictly in `.env` (never hardcoded or committed).
+- **Secrets & Config:** All credentials, API keys, and environment-specific URLs belong strictly in `.env` (never hardcoded or committed). Never use insecure fallback secrets (e.g., `process.env.JWT_SECRET || "default"`).
+- **Security & API Sharp Edges (`trailofbits/skills`):** Design interfaces to be fail-closed and resistant to misuse (`sharp-edges`), audit new packages before adoption (`supply-chain-risk-auditor`), and review diffs for security regressions (`differential-review`).
 - **Backward Compatibility:** Do not break existing public API contracts or DB schemas without an explicit migration entry in `.ai/04-decisions.md`.
 - **OS Portability:** Use `path.join` / `pathlib.Path` instead of hardcoded `\` or `/` path strings, and ensure scripts run identically on Windows and Linux.
 
