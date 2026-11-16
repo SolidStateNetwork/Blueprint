@@ -10,4 +10,4 @@
 - [ ] **TASK-005:** Implement API/Interface layer and integration tests
 
 ## Completed
-- [x] **TASK-000:** Initialized repository from `ai-project-blueprint`
+- [x] **TASK-000:** Initialized repository from `SolidStateNetwork/Blueprint`
