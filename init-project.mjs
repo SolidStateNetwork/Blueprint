@@ -126,7 +126,7 @@ if (!skipTools) {
   }
 
   try {
-    console.log('\n⏳ [6/7] Installing Design-MD-Generator v2 skill (17-section DESIGN.md spec & extractor)...');
+    console.log('\n⏳ [6/7] Installing Design-MD-Generator v2 & UX-MD-Generator v1 skills (DESIGN.md & UX.md)...');
     execSync(
       `${npxCmd} -y skills add jasonhnd/design-md-generator --skill design-md-generator --copy -y`,
       { stdio: 'inherit' }
@@ -154,9 +154,13 @@ if (!skipTools) {
         }
       }
     }
-    console.log('✅ Design-MD-Generator v2 skill installed and sanitized.');
+    execSync(
+      `${npxCmd} -y skills add SolidStateNetwork/ux.md --skill ux-md-generator --copy -y`,
+      { stdio: 'inherit' }
+    );
+    console.log('✅ Design-MD-Generator v2 & UX-MD-Generator v1 skills installed.');
   } catch (err) {
-    console.warn('⚠️  Design-MD-Generator auto-install skipped/failed. Run manually: npx skills add jasonhnd/design-md-generator --skill design-md-generator --copy -y');
+    console.warn('⚠️  Design/UX skill auto-install skipped/failed. Run manually: npx skills add jasonhnd/design-md-generator --skill design-md-generator --copy -y && npx skills add SolidStateNetwork/ux.md --skill ux-md-generator --copy -y');
   }
 
   if (!isUpdate) {
@@ -183,7 +187,7 @@ console.log(`
    • Cursor                   -> .cursor/rules/core-governance.mdc & antislop.mdc
    • GitHub Copilot          -> .github/copilot-instructions.md
    • Anti-Slop Filter         -> .agents/skills/antislop* (mode: "during")
-   • Design & UI Stack        -> design-md-generator v2 + frontend-design (+ getdesign.md / shadcn.io)
+   • Design & UX Stack        -> design-md-generator v2 (DESIGN.md) + ux-md-generator v1 (UX.md) + frontend-design
    • Security Guardrails      -> Trail of Bits (sharp-edges, differential-review, supply-chain-risk-auditor)
    • Superpowers Discipline   -> systematic-debugging, TDD & verification-before-completion
    • README Auto-Skill        -> .agents/skills/beautify-github-readme (auto-loaded on README edits)
@@ -191,6 +195,6 @@ console.log(`
 
 Next Steps:
    1. Add your API key(s) in .env (if needed for Task Master; Context7 works without keys).
-   2. Open .ai/01-architecture.md (or type "init" in chat) to define your stack, boundaries & DESIGN.md.
+   2. Open .ai/01-architecture.md (or type "init" in chat) to define your stack, boundaries, DESIGN.md & UX.md.
    3. Run "node verify-governance.mjs" anytime to verify repository & blackbox integrity.
 `);

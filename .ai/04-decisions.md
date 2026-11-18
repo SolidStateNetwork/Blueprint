@@ -25,3 +25,13 @@ Log every significant architectural, library, or schema decision here so future 
   2. Install language-agnostic engineering skills from `obra/superpowers` (`systematic-debugging`, `verification-before-completion`, `test-driven-development`) in `init-project.mjs`.
   3. Add zero-dependency `verify-governance.mjs` + `.github/workflows/governance.yml`, `.editorconfig`, and `.github/PULL_REQUEST_TEMPLATE.md`.
 - **Consequences:** Every project spun up from this template gets automated secret/stub/conflict checks, consistent cross-OS formatting, live library docs, and strict test/verification discipline without language lock-in.
+
+## ADR-004: Structural UX Specification Integration (`SolidStateNetwork/ux.md`)
+- **Date:** Template Update
+- **Status:** Accepted
+- **Context:** While `DESIGN.md` defines visual tokens (colors, typography, shadows), multi-session AI coding frequently drifts in application skeleton, page archetypes, route transitions, 5-state view coverage (`Loading`, `Empty`, `Populated`, `Validation Error`, `Fatal Error`), and responsive breakpoint reflow.
+- **Decision:**
+  1. Provision `SolidStateNetwork/ux.md` (`npx skills add SolidStateNetwork/ux.md --skill ux-md-generator --copy -y`) inside `init-project.mjs` alongside `design-md-generator`.
+  2. Anchor `UX.md` setup and enforcement in `AGENTS.md` (Step 0.4 Quick-Init Trigger and `antislop` section) and `.ai/02-blackbox-rules.md`.
+  3. Extend `verify-governance.mjs` to automatically validate `UX.md` when present in a project root.
+- **Consequences:** Projects with a UI/frontend operate on the complete specification triad (`AGENTS.md` + `DESIGN.md` + `UX.md`), preventing structural layout drift across sessions and tools.

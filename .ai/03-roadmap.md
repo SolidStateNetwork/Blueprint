@@ -11,3 +11,4 @@
 
 ## Completed
 - [x] **TASK-000:** Initialized repository from `SolidStateNetwork/Blueprint`
+- [x] **TASK-TPL-001:** Integrated `SolidStateNetwork/ux.md` (`UX.md` v1 specification & `ux-md-generator` skill) into `init-project.mjs`, `AGENTS.md`, `.ai/02-blackbox-rules.md`, `verify-governance.mjs`, and `README.md`

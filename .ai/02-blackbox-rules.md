@@ -15,7 +15,7 @@
 
 ## 3. Anti-Slop Quality Filter (UI, Copy, Accessibility & Code)
 - **Active Filter (`during` Mode):** Apply the installed `antislop` skills (`.agents/skills/antislop*`) while generating code, UI, or text.
-- **Purposeful UI & `DESIGN.md`:** Reject visual techniques without a concrete hierarchy, identity, or readability purpose. Read `DESIGN.md` (when present) for visual direction.
+- **Purposeful UI, `DESIGN.md` & `UX.md`:** Reject visual techniques without a concrete hierarchy, identity, or readability purpose. Read `DESIGN.md` (when present) for visual direction and `UX.md` (when present) for app shell structure, route flows, state coverage, and negative UX constraints.
 - **Honest Copywriting (`antislop-copywriting`):** Never invent fake numbers, latency metrics, ROI claims, testimonials, or generic AI hype phrases.
 - **Accessibility & Mobile Reflow (`antislop-human` & `antislop-layoutmobile`):** Enforce WCAG 2.2 contrast, visible focus states, semantic controls, and responsive mobile reflow without horizontal overflow.
 - **Clean Code Comments (`antislop-code`):** Never add decorative ASCII/box-drawing section banners, emojis in code comments, or comments that merely restate the code.

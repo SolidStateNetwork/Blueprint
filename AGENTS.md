@@ -5,7 +5,9 @@ When the user starts a session by typing `init` (or `init: <project description>
 1. **Never overwrite `AGENTS.md`** (do not replace this file with a generic `/init` summary).
 2. Check if `.env` or `.agents/skills/` exist; if not, run `node init-project.mjs` first.
 3. If no project details were provided, ask 3 short questions (1. Project purpose, 2. Tech stack, 3. Core modules). Once answered (or if already provided in `init: ...`), populate `.ai/01-architecture.md`, `.ai/05-patterns.md`, and `.ai/03-roadmap.md` (`TASK-001` completed).
-4. **UI / `DESIGN.md` Setup (if project has a UI/frontend and no `DESIGN.md` exists):** Recommend picking a design system from **https://getdesign.md/** or **https://www.shadcn.io/**, OR offer to generate a comprehensive **17-section `DESIGN.md` (v2 format)** right away using `.agents/skills/design-md-generator/SKILL.md` and `.agents/skills/design-md-generator/resources/design-md-format.md` (either extracted from a reference URL or tailored to their desired style).
+4. **UI / `DESIGN.md` & `UX.md` Setup (if project has a UI/frontend):**
+   - **Visual System (`DESIGN.md`):** If no `DESIGN.md` exists, recommend picking a design system from **https://getdesign.md/** or **https://www.shadcn.io/**, OR offer to generate a comprehensive **17-section `DESIGN.md` (v2 format)** right away using `.agents/skills/design-md-generator/SKILL.md` and `.agents/skills/design-md-generator/resources/design-md-format.md`.
+   - **Structural Skeleton (`UX.md`):** If no `UX.md` exists, offer to generate a **12-section `UX.md` (v1 format)** right away using `.agents/skills/ux-md-generator/SKILL.md` (plus `.agents/skills/ux-md-generator/scripts/generate-ux.mjs` and `validate-ux.mjs`) to lock in the app shell, page archetypes, route flows, 5-state coverage matrix, and responsive breakpoint reflow.
 
 ## 1. Core Mandate (Read First)
 You are operating inside a structured repository. Before modifying any file, you MUST read and respect the constraints inside `.ai/`:
@@ -47,6 +49,6 @@ For UI, copy, people, mobile layout, or code comments work, read these installed
 - People: `antislop-human`: `.agents/skills/antislop-human/SKILL.md`
 - Mobile / responsive: `antislop-layoutmobile`: `.agents/skills/antislop-layoutmobile/SKILL.md`
 - Code comments: `antislop-code`: `.agents/skills/antislop-code/SKILL.md`
-Before starting, follow the core's "Two Usage Modes" section in strict order: explicit session instruction first, then global preference (`during` preconfigured via `init-project.mjs`), then default to `during` if unresolved. For UI work intended to ship, read `DESIGN.md` (if present) for visual direction and apply `antislop` as the quality filter.
+Before starting, follow the core's "Two Usage Modes" section in strict order: explicit session instruction first, then global preference (`during` preconfigured via `init-project.mjs`), then default to `during` if unresolved. For UI work intended to ship, read `DESIGN.md` (if present) for visual direction and `UX.md` (if present) for structural flows, states, and layout boundaries, and apply `antislop` as the quality filter.
 To update antislop later: `npx antislop-ai --update`, or run `npx skills add miqdadbadjuber/anti-slop --skill "*" -y`.
 <!-- antislop:end -->

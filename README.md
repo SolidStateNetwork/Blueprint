@@ -4,13 +4,13 @@
 [![Node.js](https://img.shields.io/badge/Node.js-20%2B-339933?logo=nodedotjs&logoColor=white)](init-project.mjs)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-blue)]()
 
-Cross-platform project template that gives **OpenCode**, **Antigravity / Gemini CLI**, **Claude Code**, **Cursor**, **OpenAI Codex**, and **GitHub Copilot** one shared architecture memory bank (`.ai/`), automated skill provisioning, and pre-commit governance checks — without OS symlinks or runtime dependencies.
+Cross-platform project template that gives **OpenCode**, **Antigravity / Gemini CLI**, **Claude Code**, **Cursor**, **OpenAI Codex**, and **GitHub Copilot** one shared architecture memory bank (`.ai/`), automated skill provisioning, and pre-commit governance checks, without OS symlinks or runtime dependencies.
 
 ---
 
 ## Quickstart
 
-1. Click **Use this template** → **Create a new repository** on GitHub and clone your new repo.
+1. Click **Use this template** > **Create a new repository** on GitHub and clone your new repo.
 2. Open the project in your AI coding agent (**OpenCode**, **Antigravity**, **Claude Code**, or **Cursor**) and type in chat:
 
 ```text
@@ -22,7 +22,7 @@ init
 1. Runs `node init-project.mjs` if `.env` or `.agents/skills/` are not set up yet.
 2. Sets your repository folder name in `.ai/01-architecture.md` and installs the local `.git/hooks/pre-commit` check.
 3. Interviews you (3 short questions) or uses your brief to populate `.ai/01-architecture.md`, `.ai/05-patterns.md`, and `.ai/03-roadmap.md`.
-4. **If your project includes a UI/frontend:** helps you pick a design system from [getdesign.md](https://getdesign.md/) or [shadcn.io](https://www.shadcn.io/), or generates a 17-section `DESIGN.md` (v2 format) via `design-md-generator`.
+4. **If your project includes a UI/frontend:** sets up both the visual system (`DESIGN.md` v2 via `design-md-generator`, [getdesign.md](https://getdesign.md/), or [shadcn.io](https://www.shadcn.io/)) and the structural application skeleton (`UX.md` v1 via [`SolidStateNetwork/ux.md`](https://github.com/SolidStateNetwork/ux.md) `ux-md-generator`).
 
 ---
 
@@ -49,7 +49,7 @@ flowchart LR
   end
 
   subgraph Guardrails["Automated Guardrails"]
-    SK[".agents/skills/*<br/>(BMAD, Anti-Slop, Superpowers,<br/>Trail of Bits, Design-MD, README)"]
+    SK[".agents/skills/*<br/>(BMAD, Anti-Slop, Superpowers,<br/>Trail of Bits, Design-MD, UX-MD, README)"]
     VG["verify-governance.mjs<br/>(Pre-Commit & GitHub Actions)"]
   end
 
@@ -81,7 +81,8 @@ The template repository itself contains **0 dependencies** and **0 bundled third
 | :--- | :--- | :--- |
 | **BMAD-METHOD** | `bmad-code-org/BMAD-METHOD` | Agile architecture, PRD breakdown, and sprint workflows (`/architect`, `/pm`, `/dev`) |
 | **Anti-Slop (6 Skills)** | `miqdadbadjuber/anti-slop` | Preconfigured in `during` mode to filter generic AI UI (`antislop-ui`), hype copy (`antislop-copywriting`), a11y gaps (`antislop-human`), broken mobile reflow (`antislop-layoutmobile`), and banner comments (`antislop-code`) |
-| **Design-MD-Generator v2** | `jasonhnd/design-md-generator` | Generates or extracts 17-section `DESIGN.md` v2 specifications (paired with [getdesign.md](https://getdesign.md/) & [shadcn.io](https://www.shadcn.io/)) |
+| **Design-MD-Generator v2** | `jasonhnd/design-md-generator` | Generates or extracts 17-section `DESIGN.md` v2 visual token specifications (paired with [getdesign.md](https://getdesign.md/) & [shadcn.io](https://www.shadcn.io/)) |
+| **UX-MD-Generator v1** | [`SolidStateNetwork/ux.md`](https://github.com/SolidStateNetwork/ux.md) | Generates, extracts, lints, diffs, and previews 12-section `UX.md` v1 structural specifications (app shell, route flows, 5-state coverage matrix, and breakpoint reflow) |
 | **Frontend Design** | `anthropics/skills` | Official Anthropic skill (`frontend-design`) for implementing UI components |
 | **Security Guardrails** | `trailofbits/skills` | `sharp-edges` (prevent API footguns & insecure defaults), `differential-review` (audit git diffs), `supply-chain-risk-auditor` (vet dependencies) |
 | **Superpowers Engineering** | `obra/superpowers` | `systematic-debugging` (root-cause first), `test-driven-development`, `verification-before-completion` |
@@ -96,9 +97,9 @@ The template repository itself contains **0 dependencies** and **0 bundled third
 | Command | Description |
 | :--- | :--- |
 | `node init-project.mjs` | Initializes `.env`, Git pre-commit hook, all local skills, and Task Master |
-| `node init-project.mjs --update` | Updates all installed skills (`BMAD`, `anti-slop`, `superpowers`, `trailofbits`, etc.) to their latest release |
+| `node init-project.mjs --update` | Updates all installed skills (`BMAD`, `anti-slop`, `superpowers`, `trailofbits`, `ux-md-generator`, etc.) to their latest release |
 | `node init-project.mjs --skip-tools` | Lightweight setup: creates `.env`, project name, and pre-commit hook without downloading external skills |
-| `node verify-governance.mjs` | Verifies `.ai/` files, blocks tracked `.env` or hardcoded API keys, checks for `TODO: implement later` stubs, merge conflicts, and file length limits |
+| `node verify-governance.mjs` | Verifies `.ai/` files (plus `UX.md` when present), blocks tracked `.env` or hardcoded API keys, checks for `TODO: implement later` stubs, merge conflicts, and file length limits |
 
 ---
 

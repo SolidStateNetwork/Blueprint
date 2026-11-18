@@ -72,6 +72,36 @@ for (const relPath of REQUIRED_FILES) {
   }
 }
 
+const uxFilePath = path.join(process.cwd(), 'UX.md');
+if (fs.existsSync(uxFilePath)) {
+  const uxValidatorPath = path.join(
+    process.cwd(),
+    '.agents',
+    'skills',
+    'ux-md-generator',
+    'scripts',
+    'validate-ux.mjs'
+  );
+  if (fs.existsSync(uxValidatorPath)) {
+    try {
+      execSync(`node "${uxValidatorPath}" "${uxFilePath}"`, { stdio: 'inherit' });
+    } catch {
+      console.error('❌ UX.md validation failed.');
+      errors++;
+    }
+  } else {
+    const uxContent = fs.readFileSync(uxFilePath, 'utf8');
+    const hasFrontmatter = /^---\r?\n[\s\S]+?\r?\n---/.test(uxContent);
+    const sectionMatches = uxContent.match(/^##\s+(?:1[0-2]|[0-9])\.\s+/gm) || [];
+    if (!hasFrontmatter || sectionMatches.length < 12) {
+      console.error(
+        `❌ UX.md is missing YAML frontmatter or all 12 numbered sections (found ${sectionMatches.length}/12).`
+      );
+      errors++;
+    }
+  }
+}
+
 try {
   const trackedFiles = execSync('git ls-files', { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })
     .split(/\r?\n/)
