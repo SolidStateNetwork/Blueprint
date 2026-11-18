@@ -26,7 +26,7 @@ init
 
 ---
 
-## How It Works
+## How it works
 
 ```mermaid
 flowchart LR
@@ -60,7 +60,7 @@ flowchart LR
 
 ---
 
-## Supported AI Agents
+## Supported AI agents
 
 | Agent | Native Entrypoint | Loaded Context & MCP Config |
 | :--- | :--- | :--- |
@@ -73,7 +73,7 @@ flowchart LR
 
 ---
 
-## Provisioned Skills & MCP Tooling (`init-project.mjs`)
+## Provisioned skills and MCP tooling (`init-project.mjs`)
 
 The template repository itself contains **0 dependencies** and **0 bundled third-party folders**. Running `node init-project.mjs` (or typing `init` in chat) installs all skills as real file copies (`--copy`, no Windows symlink issues):
 
@@ -82,7 +82,7 @@ The template repository itself contains **0 dependencies** and **0 bundled third
 | **BMAD-METHOD** | `bmad-code-org/BMAD-METHOD` | Agile architecture, PRD breakdown, and sprint workflows (`/architect`, `/pm`, `/dev`) |
 | **Anti-Slop (6 Skills)** | `miqdadbadjuber/anti-slop` | Preconfigured in `during` mode to filter generic AI UI (`antislop-ui`), hype copy (`antislop-copywriting`), a11y gaps (`antislop-human`), broken mobile reflow (`antislop-layoutmobile`), and banner comments (`antislop-code`) |
 | **Design-MD-Generator v2** | `jasonhnd/design-md-generator` | Generates or extracts 17-section `DESIGN.md` v2 visual token specifications (paired with [getdesign.md](https://getdesign.md/) & [shadcn.io](https://www.shadcn.io/)) |
-| **UX-MD-Generator v1** | [`SolidStateNetwork/ux.md`](https://github.com/SolidStateNetwork/ux.md) | Generates, extracts, lints, diffs, and previews 12-section `UX.md` v1 structural specifications (app shell, route flows, 5-state coverage matrix, and breakpoint reflow) |
+| **UX-MD-Generator v1** | [`SolidStateNetwork/ux.md`](https://github.com/SolidStateNetwork/ux.md) | Generates, extracts, lints, diffs, and previews 12-section `UX.md` v1 structural specifications (app shell, route flows, 4-state view matrix, and breakpoint reflow) |
 | **Frontend Design** | `anthropics/skills` | Official Anthropic skill (`frontend-design`) for implementing UI components |
 | **Security Guardrails** | `trailofbits/skills` | `sharp-edges` (prevent API footguns & insecure defaults), `differential-review` (audit git diffs), `supply-chain-risk-auditor` (vet dependencies) |
 | **Superpowers Engineering** | `obra/superpowers` | `systematic-debugging` (root-cause first), `test-driven-development`, `verification-before-completion` |
@@ -92,7 +92,7 @@ The template repository itself contains **0 dependencies** and **0 bundled third
 
 ---
 
-## CLI Commands
+## CLI commands
 
 | Command | Description |
 | :--- | :--- |
@@ -103,7 +103,7 @@ The template repository itself contains **0 dependencies** and **0 bundled third
 
 ---
 
-## Repository Structure
+## Repository structure
 
 ```text
 Blueprint/

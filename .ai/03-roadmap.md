@@ -1,14 +1,13 @@
 # Active Roadmap & Sprint Tracking
 
-## Current Milestone: M1 - Foundation & Core Setup
-- [ ] **TASK-001:** Customize `.ai/01-architecture.md` with target tech stack and module boundaries
-- [ ] **TASK-002:** Define project PRD and parse into granular tasks (via Task Master or manual breakdown)
-- [ ] **TASK-003:** Scaffold base project structure and configure CI/linter checks
+## Current milestone: M1 - Foundation and core setup
+- [ ] **TASK-001:** Define system overview, tech stack, and module boundaries in `.ai/01-architecture.md`
+- [ ] **TASK-002:** Break down project requirements into actionable tasks
+- [ ] **TASK-003:** Scaffold base project structure and configure test and lint checks
 
-## Backlog (Upcoming)
+## Backlog
 - [ ] **TASK-004:** Implement core domain module with unit tests
-- [ ] **TASK-005:** Implement API/Interface layer and integration tests
+- [ ] **TASK-005:** Implement API or interface layer with integration tests
 
 ## Completed
-- [x] **TASK-000:** Initialized repository from `SolidStateNetwork/Blueprint`
-- [x] **TASK-TPL-001:** Integrated `SolidStateNetwork/ux.md` (`UX.md` v1 specification & `ux-md-generator` skill) into `init-project.mjs`, `AGENTS.md`, `.ai/02-blackbox-rules.md`, `verify-governance.mjs`, and `README.md`
+- [x] **TASK-000:** Initialize project workspace
